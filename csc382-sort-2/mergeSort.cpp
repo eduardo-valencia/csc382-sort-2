@@ -68,8 +68,8 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 template <typename Data>
 Node<Data>* getMiddleNode(LinkedList<Data>& list)
 {
-	Node<Data>* leftNode = rightList.getHead();
-	Node<Data>* rightNode = rightList.getHead();
+	Node<Data>* leftNode = list.getHead();
+	Node<Data>* rightNode = list.getTail();
 	while (leftNode != nullptr && rightNode != nullptr && leftNode != rightNode && leftNode->getNext() != nullptr && rightNode->getPrevious() != nullptr && leftNode->getNext() != rightNode)
 	{
 		leftNode = leftNode->getNext();
@@ -89,13 +89,13 @@ bool getIfListIsSorted(LinkedList<Data>& list)
 template <typename Data>
 LinkedList<Data> mergeSort(LinkedList<Data>& list)
 {
-	Node<Data>* isListSorted = getIfListIsSorted<Data>(list);
+	boolean isListSorted = getIfListIsSorted<Data>(list);
 	if (isListSorted)
 	{
 		return list;
 	}
 	Node<Data>* middleNode = getMiddleNode<Data>(list);
-	Data defaultNodeValue = getDefaultValue<Data>(leftList);
+	Data defaultNodeValue = getDefaultValue<Data>(list);
 
 	LinkedList<Data> leftList{defaultNodeValue};
 	// I may need to use std::move here
@@ -111,3 +111,5 @@ LinkedList<Data> mergeSort(LinkedList<Data>& list)
 
 	return mergeLists(sortedLeft, sortedRight);
 };
+
+template LinkedList<int> mergeSort(LinkedList<int>& list);
