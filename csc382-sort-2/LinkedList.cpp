@@ -60,3 +60,5 @@ void LinkedList<Data>::Delete(Node<Data>* node)
 	previousNode->next->previous = previousNode;
 	delete node;
 }
+
+template class LinkedList<int>;

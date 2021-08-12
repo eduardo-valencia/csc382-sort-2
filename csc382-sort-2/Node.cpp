@@ -49,3 +49,5 @@ void Node<Data>::setPrevious(Node<Data>* newNode)
 {
 	previous = newNode;
 }
+
+template class Node<int>;
