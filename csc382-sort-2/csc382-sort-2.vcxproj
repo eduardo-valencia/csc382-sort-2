@@ -143,6 +143,7 @@
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="mergeSort.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
