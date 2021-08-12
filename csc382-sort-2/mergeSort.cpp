@@ -3,10 +3,11 @@
 using namespace std;
 
 template <typename Data>
-void moveNodeIntoSortedList(LinkedList<Data>& list, LinkedList<Data>& sortedItems, Node<Data>& node)
+void moveNodeIntoSortedList(LinkedList<Data>& list, LinkedList<Data>& sortedItems, Node<Data>* node)
 {
-	sortedItems.Insert(node.data);
-	list.Delete(&node);
+	Data nodeData = *(node->getData());
+	sortedItems.Insert(nodeData);
+	list.Delete(node);
 };
 
 template <typename Data>
@@ -35,7 +36,7 @@ Data getDefaultValue(LinkedList<Data>& leftList)
 {
 	Node<Data>* leftHead = leftList.getHead();
 	// Because linked list requires a default value for head and tail.
-	Data defaultNodeValue = leftHead->getData();
+	return *(leftHead->getData());
 }
 
 template <typename Data>
@@ -47,12 +48,12 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 	Node<Data>* rightHead = rightList.getHead();
 
 	Node<Data>* leftNode = leftHead->getNext();
-	Node<Data>* rightNode = rightNode->getNext();
+	Node<Data>* rightNode = rightHead->getNext();
 
 	while (leftNode != nullptr && rightNode != nullptr)
 	{
-		Data leftData = leftNode->getData();
-		Data rightData = rightNode->getData();
+		Data leftData = *(leftNode->getData());
+		Data rightData = *(rightNode->getData());
 		if (leftData < rightData)
 		{
 			moveNodeIntoSortedList<Data>(leftList, sortedItems, leftNode);
@@ -63,6 +64,7 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 		}
 	}
 	moveRemainingElements<Data>(sortedItems, leftList, rightList);
+	return sortedItems;
 };
 
 template <typename Data>
@@ -89,7 +91,7 @@ bool getIfListIsSorted(LinkedList<Data>& list)
 template <typename Data>
 LinkedList<Data> mergeSort(LinkedList<Data>& list)
 {
-	boolean isListSorted = getIfListIsSorted<Data>(list);
+	bool isListSorted = getIfListIsSorted<Data>(list);
 	if (isListSorted)
 	{
 		return list;
