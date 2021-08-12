@@ -1,10 +1,12 @@
 #pragma once
 
+#include <utility>
+
 #include "Node.h"
 #include "LinkedList.h"
 
 template <typename Data>
-void moveNodeIntoSortedList(Node<Data> & node);
+void moveNodeIntoSortedList(LinkedList<Data>& list, LinkedList<Data>& sortedItems, Node<Data> & node);
 
 template <typename Data>
 Node<Data>* getHeadOfListWithRemainingElements(LinkedList<Data>& leftList, LinkedList<Data>& rightList);

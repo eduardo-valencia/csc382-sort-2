@@ -18,6 +18,20 @@ Node<Data>* LinkedList<Data>::getHead()
 	return head;
 }
 
+// Set list's head
+template <typename Data>
+void LinkedList<Data>::setHead(Node<Data>* newHead)
+{
+	head = newHead;
+}
+
+// Returns list's tail
+template <typename Data>
+Node<Data>* LinkedList<Data>::getTail()
+{
+	return tail;
+}
+
 // Finds a node, given a pointer to data.
 // Compare the data values, and not the pointers themselves.
 // Returns either a null pointer or a pointer to the found node.

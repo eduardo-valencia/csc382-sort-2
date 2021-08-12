@@ -4,14 +4,17 @@
 template <typename Data>
 class LinkedList
 {
-private:
+public:
 	Node<Data>* head;
 	Node<Data>* tail;
 
-public:
 	LinkedList(Data defaultValue);
 
 	Node<Data>* getHead();
+
+	void setHead(Node<Data>* newHead);
+
+	Node<Data>* getTail();
 
 	Node<Data>* Find(Data* data);
 

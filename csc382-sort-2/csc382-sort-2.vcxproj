@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="csc382-sort-2.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="mergeSort.cpp" />
     <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <ItemGroup>
