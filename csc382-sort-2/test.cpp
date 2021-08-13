@@ -38,7 +38,7 @@ class MergeSortTest
 		return length;
 	}
 
-	void testLesserDataDoesNotExist(LinkedList<int>& list, Node<int>* maxNode)
+	void testGreaterDataDoesNotExist(LinkedList<int>& list, Node<int>* maxNode)
 	{
 		Node<int>* head = list.getHead();
 		Node<int>* currentNode = head->getNext();
@@ -48,7 +48,7 @@ class MergeSortTest
 		while (currentNode != nullptr)
 		{
 			int currentData = *(currentNode->getData());
-			if (currentData < maxData)
+			if (currentData > maxData)
 			{
 				cout << "List is not sorted.\n";
 			}
@@ -63,7 +63,7 @@ class MergeSortTest
 		while (currentNode != nullptr)
 		{
 			cout << *(currentNode->getData()) << endl;
-			testLesserDataDoesNotExist(list, currentNode);
+			testGreaterDataDoesNotExist(list, currentNode);
 			currentNode = currentNode->getNext();
 		}
 	}
