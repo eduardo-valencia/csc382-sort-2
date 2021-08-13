@@ -2,13 +2,12 @@
 //
 
 #include <iostream>
-#include "mergeSort.h"
+#include "Test.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    LinkedList<int> myLinkedList{ 0 };
-    LinkedList<int> sortedList = mergeSort<int>(myLinkedList);
+    std::cout << "Running automatic tests!\n";
+    runTests();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

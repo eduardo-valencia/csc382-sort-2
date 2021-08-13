@@ -38,10 +38,10 @@
     <ClInclude Include="LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h">
+    <ClInclude Include="mergeSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mergeSort.h">
+    <ClInclude Include="Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
