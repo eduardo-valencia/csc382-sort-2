@@ -62,6 +62,7 @@ class MergeSortTest
 		Node<int>* currentNode = head->getNext();
 		while (currentNode != nullptr)
 		{
+			cout << *(currentNode->getData()) << endl;
 			testLesserDataDoesNotExist(list, currentNode);
 			currentNode = currentNode->getNext();
 		}
@@ -112,8 +113,31 @@ void testListWithSingleNode()
 	test.runTests();
 }
 
+void testListWithEvenNodeNumber()
+{
+	vector<int> nodeData{ 2, 1 };
+	MergeSortTest test{ nodeData };
+	test.runTests();
+}
+
+void testListWithOddNodeNumber()
+{
+	vector<int> nodeData{ 3, 2, 9 };
+	MergeSortTest test{ nodeData };
+	test.runTests();
+}
+
+void testListWithLargerDataSet()
+{
+	vector<int> nodeData{ 100, 98, 383, 2923, 192, 2, 0, 0, -1, 20, 40 };
+	MergeSortTest test{ nodeData };
+	test.runTests();
+}
+
 void runTests()
 {
 	testEmptyList();
 	testListWithSingleNode();
+	testListWithEvenNodeNumber();
+	testListWithLargerDataSet();
 }

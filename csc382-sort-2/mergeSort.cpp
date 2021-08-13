@@ -85,7 +85,8 @@ bool getIfListIsSorted(LinkedList<Data>& list)
 {
 	Node<Data>* listHead = list.getHead();
 	Node<Data>* firstNode = listHead->getNext();
-	return firstNode == nullptr || firstNode->getNext() == nullptr;
+	Node<Data>* listTail = list.getTail();
+	return firstNode == listTail || firstNode->getNext() == listTail;
 }
 
 template <typename Data>
