@@ -68,14 +68,39 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 };
 
 template <typename Data>
+bool getIfShouldContinueLookingForMiddleNode(LinkedList<Data>& list, Node<Data>* leftNode, Node<Data>* rightNode)
+{
+	Node<Data>* tail = list.getTail();
+	Node<Data>* head = list.getHead();
+	bool cursorReachedEndOfList = (leftNode == tail || rightNode == head);
+	if (cursorReachedEndOfList)
+	{
+		return false;
+	}
+	if (leftNode == rightNode)
+	{
+		return false;
+	}
+	bool nodesWillBeAtEndOfList = leftNode->getNext() == tail || rightNode->getPrevious() == head;
+	if (nodesWillBeAtEndOfList)
+	{
+		return false;
+	}
+	bool nodesAreAdjacent = leftNode->getNext() == rightNode;
+	return !nodesAreAdjacent;
+}
+
+template <typename Data>
 Node<Data>* getMiddleNode(LinkedList<Data>& list)
 {
 	Node<Data>* leftNode = list.getHead();
 	Node<Data>* rightNode = list.getTail();
-	while (leftNode != nullptr && rightNode != nullptr && leftNode != rightNode && leftNode->getNext() != nullptr && rightNode->getPrevious() != nullptr && leftNode->getNext() != rightNode)
+	bool shouldContinueLookingForMiddleNode = getIfShouldContinueLookingForMiddleNode(list, leftNode, rightNode);
+	while (shouldContinueLookingForMiddleNode)
 	{
 		leftNode = leftNode->getNext();
 		rightNode = rightNode->getPrevious();
+		shouldContinueLookingForMiddleNode = getIfShouldContinueLookingForMiddleNode(list, leftNode, rightNode);
 	}
 	return leftNode;
 };
