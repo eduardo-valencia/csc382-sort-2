@@ -115,6 +115,27 @@ bool getIfListIsSorted(LinkedList<Data>& list)
 }
 
 template <typename Data>
+LinkedList<Data> getLeftList(Data defaultNodeValue, LinkedList<Data>& list, Node<Data>* middleNode)
+{
+	LinkedList<Data> leftList{ defaultNodeValue };
+	leftList.head = list.head;
+	Node<Data>* lastNode = middleNode->getPrevious();
+	lastNode->next = leftList.tail;
+	leftList.tail->previous = lastNode;
+	return leftList;
+}
+
+template <typename Data>
+LinkedList<Data> getRightList(Data defaultNodeValue, LinkedList<Data>& list, Node<Data>* middleNode)
+{
+	LinkedList<Data> rightList{ defaultNodeValue };
+	rightList.head = middleNode;
+	rightList.head->previous = nullptr;
+	rightList.tail = list.tail;
+	return rightList;
+}
+
+template <typename Data>
 LinkedList<Data> mergeSort(LinkedList<Data>& list)
 {
 	bool isListSorted = getIfListIsSorted<Data>(list);
@@ -125,19 +146,13 @@ LinkedList<Data> mergeSort(LinkedList<Data>& list)
 	Node<Data>* middleNode = getMiddleNode<Data>(list);
 	Data defaultNodeValue = getDefaultValue<Data>(list);
 
-	LinkedList<Data> leftList{defaultNodeValue};
-	// I may need to use std::move here
-	leftList.head = list.head;
-	leftList.tail = middleNode->getPrevious();
+	LinkedList<Data> leftList = getLeftList<Data>(defaultNodeValue, list, middleNode);
+	LinkedList<Data> rightList = getRightList<Data>(defaultNodeValue, list, middleNode);
 
-	LinkedList<Data> rightList{ defaultNodeValue };
-	rightList.head = middleNode;
-	rightList.tail = list.tail;
+	LinkedList<Data> sortedLeft = mergeSort<Data>(leftList);
+	LinkedList<Data> sortedRight = mergeSort<Data>(rightList);
 
-	LinkedList<Data> sortedLeft = mergeSort(leftList);
-	LinkedList<Data> sortedRight = mergeSort(rightList);
-
-	return mergeLists(sortedLeft, sortedRight);
+	return mergeLists<Data>(sortedLeft, sortedRight);
 };
 
 template LinkedList<int> mergeSort(LinkedList<int>& list);
