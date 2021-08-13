@@ -1,44 +1,119 @@
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
 #include "mergeSort.h"
 
-template <typename Data>
-void testLesserDataDoesNotExist(LinkedList<Data>& list, Node<Data>* maxNode)
-{
-	Node<Data>* head = list.getHead();
-	Node<Data>* currentNode = head->getNext();
-	if (currentNode == nullptr) return;
+using namespace std;
 
-	Data maxData = *(maxNode->getData());
-	while (currentNode != nullptr)
+class MergeSortTest
+{
+	LinkedList<int>* linkedList;
+	vector<int> nodeData;
+
+	// Inserts all data from nodeData into the linked list
+	void insertNodeData()
 	{
-		Data currentData = *(currentNode->getData());
-		if (currentData < maxData)
+		vector<int>::iterator currentInt = nodeData.begin();
+		for (vector<int>::iterator currentInt = nodeData.begin(); currentInt != nodeData.end(); ++currentInt)
 		{
-			throw "List is not sorted.\n";
-		}
-		currentNode = currentNode->getNext();
-	}
-}
+			linkedList->Insert(*currentInt);
 
-template <typename Data>
-void testListIsSorted(LinkedList<Data>& list)
-{
-	Node<Data>* head = list.getHead();
-	Node<Data>* currentNode = head->getNext();
-	while (currentNode != nullptr)
-	{
-		testLesserDataDoesNotExist(list, currentNode);
-		currentNode = currentNode->getNext();
+		}
 	}
-}
+
+	// Returns length of the linked list
+	int getLength(LinkedList<int>& list)
+	{
+		int length = 0;
+		Node<int>* currentNode = list.getHead();
+		while (currentNode->getNext() != nullptr)
+		{
+			currentNode = currentNode->getNext();
+			if (currentNode->getNext() != nullptr)
+			{
+				++length;
+			}
+		}
+		return length;
+	}
+
+	void testLesserDataDoesNotExist(LinkedList<int>& list, Node<int>* maxNode)
+	{
+		Node<int>* head = list.getHead();
+		Node<int>* currentNode = head->getNext();
+		if (currentNode == nullptr) return;
+
+		int maxData = *(maxNode->getData());
+		while (currentNode != nullptr)
+		{
+			int currentData = *(currentNode->getData());
+			if (currentData < maxData)
+			{
+				cout << "List is not sorted.\n";
+			}
+			currentNode = currentNode->getNext();
+		}
+	}
+
+	void testListIsSorted(LinkedList<int>& list)
+	{
+		Node<int>* head = list.getHead();
+		Node<int>* currentNode = head->getNext();
+		while (currentNode != nullptr)
+		{
+			testLesserDataDoesNotExist(list, currentNode);
+			currentNode = currentNode->getNext();
+		}
+	}
+
+	void testLength(LinkedList<int>& list)
+	{
+		int length = getLength(list);
+		if (length != nodeData.size())
+		{
+			cout << "Sorted list does not have expected length.\n";
+		}
+	}
+
+public:
+	// Constructor to instantiate properties
+	MergeSortTest(vector<int> nodeData) : nodeData{ nodeData }
+	{
+		linkedList = new LinkedList<int>{ 0 };
+	}
+
+	// Destructor
+	~MergeSortTest()
+	{
+		delete linkedList;
+	}
+
+	void runTests()
+	{
+		insertNodeData();
+		LinkedList<int> sortedList = mergeSort(*linkedList);
+		testListIsSorted(sortedList);
+		testLength(sortedList);
+	}
+};
 
 void testEmptyList()
 {
-	LinkedList<int> list{ 0 };
-	LinkedList<int> sortedList = mergeSort(list);
-	testListIsSorted<int>(sortedList);
+	vector<int> nodeData{};
+	MergeSortTest test{ nodeData };
+	test.runTests();
+}
+
+void testListWithSingleNode()
+{
+	vector<int> nodeData{100};
+	MergeSortTest test{ nodeData };
+	test.runTests();
 }
 
 void runTests()
 {
 	testEmptyList();
+	testListWithSingleNode();
 }
