@@ -11,25 +11,31 @@ void moveNodeIntoSortedList(LinkedList<Data>& list, LinkedList<Data>& sortedItem
 };
 
 template <typename Data>
-Node<Data>* getHeadOfListWithRemainingElements(LinkedList<Data>& leftList, LinkedList<Data>& rightList)
+LinkedList<Data>& getListWithRemainingElements(LinkedList<Data>& leftList, LinkedList<Data>& rightList)
 {
-	if (leftList.getHead() != leftList.getTail())
+	if (leftList.getHead()->getNext() != leftList.getTail())
 	{
-		return leftList.getHead();
+		return leftList;
 	}
-	return rightList.getHead();
+	return rightList;
 };
 
 template <typename Data>
 void moveRemainingElements(LinkedList<Data>& sortedItems, LinkedList<Data>& leftList, LinkedList<Data>& rightList)
 {
-	Node<Data>* headOfListWithElements = getHeadOfListWithRemainingElements<Data>(leftList, rightList);
+	LinkedList<Data>& listWithElements = getListWithRemainingElements<Data>(leftList, rightList);
+
 	Node<Data>* tail = sortedItems.getTail();
-	Node<Data>* lastElement = tail->getPrevious();
-	lastElement->next = headOfListWithElements;
-	headOfListWithElements->previous = lastElement;
-	headOfListWithElements->next = tail;
-	tail->previous = headOfListWithElements;
+	Node<Data>* lastSortedElement = tail->getPrevious();
+	Node <Data>* firstElementInListWithElements = listWithElements.getHead()->getNext();
+	Node<Data>* lastElementInListWithElements = listWithElements.getTail()->getPrevious();
+
+	// Links sorted list's last node with first element
+	lastSortedElement->next = firstElementInListWithElements;
+	firstElementInListWithElements->previous = lastSortedElement;
+	// Link tail node with last element
+	lastElementInListWithElements->next = tail;
+	tail->previous = lastElementInListWithElements;
 };
 
 template <typename Data>
@@ -66,7 +72,12 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 			rightNode = rightHead->getNext();
 		}
 	}
-	moveRemainingElements<Data>(sortedItems, leftList, rightList);
+	bool listHasElements = leftList.getHead()->getNext() != leftList.getTail() || rightList.getHead()->getNext() != rightList.getTail();
+	if (listHasElements)
+	{
+		moveRemainingElements<Data>(sortedItems, leftList, rightList);
+	}
+	
 	return sortedItems;
 };
 

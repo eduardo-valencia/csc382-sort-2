@@ -46,7 +46,7 @@ class MergeSortTest
 		if (currentNode == tail) return;
 
 		int maxData = *(maxNode->getData());
-		while (currentNode != tail)
+		while (currentNode != maxNode)
 		{
 			int currentData = *(currentNode->getData());
 			if (currentData > maxData)
@@ -101,45 +101,46 @@ public:
 	}
 };
 
-void testEmptyList()
-{
-	vector<int> nodeData{};
-	MergeSortTest test{ nodeData };
-	test.runTests();
-}
-
-void testListWithSingleNode()
-{
-	vector<int> nodeData{100};
-	MergeSortTest test{ nodeData };
-	test.runTests();
-}
-
-void testListWithEvenNodeNumber()
-{
-	vector<int> nodeData{ 2, 1 };
-	MergeSortTest test{ nodeData };
-	test.runTests();
-}
-
-void testListWithOddNodeNumber()
-{
-	vector<int> nodeData{ 3, 2, 9 };
-	MergeSortTest test{ nodeData };
-	test.runTests();
-}
+//void testEmptyList()
+//{
+//	vector<int> nodeData{};
+//	MergeSortTest test{ nodeData };
+//	test.runTests();
+//}
+//
+//void testListWithSingleNode()
+//{
+//	vector<int> nodeData{100};
+//	MergeSortTest test{ nodeData };
+//	test.runTests();
+//}
+//
+//void testListWithEvenNodeNumber()
+//{
+//	vector<int> nodeData{ 2, 1 };
+//	MergeSortTest test{ nodeData };
+//	test.runTests();
+//}
+//
+//void testListWithOddNodeNumber()
+//{
+//	vector<int> nodeData{ 3, 2, 9 };
+//	MergeSortTest test{ nodeData };
+//	test.runTests();
+//}
 
 void testListWithLargerDataSet()
 {
-	vector<int> nodeData{ 100, 98, 383, 2923, 192, 2, 0, 0, -1, 20, 40 };
+	//vector<int> nodeData{ 100, 98, 383, 2923, 192, 2, 0, 0, -1, 20, 40 };
+	vector<int> nodeData{ 100, 98, 383, 2923 };
 	MergeSortTest test{ nodeData };
 	test.runTests();
 }
 
 void runTests()
 {
-	testEmptyList();
+	/*testEmptyList();
 	testListWithSingleNode();
-	testListWithEvenNodeNumber();
+	testListWithEvenNodeNumber();*/
 	testListWithLargerDataSet();
 }
