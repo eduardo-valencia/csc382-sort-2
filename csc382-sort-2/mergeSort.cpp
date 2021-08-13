@@ -50,7 +50,7 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 	Node<Data>* leftNode = leftHead->getNext();
 	Node<Data>* rightNode = rightHead->getNext();
 
-	while (leftNode != nullptr && rightNode != nullptr)
+	while (leftNode != leftList.getTail() && rightNode != rightList.getTail())
 	{
 		Data leftData = *(leftNode->getData());
 		Data rightData = *(rightNode->getData());
@@ -62,6 +62,8 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 		{
 			moveNodeIntoSortedList<Data>(rightList, sortedItems, rightNode);
 		}
+		leftNode = leftHead->getNext();
+		rightNode = rightHead->getNext();
 	}
 	moveRemainingElements<Data>(sortedItems, leftList, rightList);
 	return sortedItems;
@@ -102,7 +104,7 @@ Node<Data>* getMiddleNode(LinkedList<Data>& list)
 		rightNode = rightNode->getPrevious();
 		shouldContinueLookingForMiddleNode = getIfShouldContinueLookingForMiddleNode(list, leftNode, rightNode);
 	}
-	return leftNode;
+	return rightNode;
 };
 
 template <typename Data>
