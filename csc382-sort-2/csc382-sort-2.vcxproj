@@ -144,12 +144,14 @@
     <ClCompile Include="mergeSort.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="timeSort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="mergeSort.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Test.h" />
+    <ClInclude Include="timeSort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

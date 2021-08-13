@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include "Test.h"
+#include "timeSort.h"
 
 int main()
 {
     std::cout << "Running automatic tests!\n";
     runTests();
+    timeAlgorithm();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
