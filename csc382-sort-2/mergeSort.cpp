@@ -132,8 +132,8 @@ template <typename Data>
 LinkedList<Data> getRightList(Data defaultNodeValue, LinkedList<Data>& list, Node<Data>* middleNode)
 {
 	LinkedList<Data> rightList{ defaultNodeValue };
-	rightList.head = middleNode;
-	rightList.head->previous = nullptr;
+	rightList.head->next = middleNode;
+	middleNode->previous = rightList.head;
 	rightList.tail = list.tail;
 	return rightList;
 }
