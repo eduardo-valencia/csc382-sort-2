@@ -13,7 +13,7 @@ void moveNodeIntoSortedList(LinkedList<Data>& list, LinkedList<Data>& sortedItem
 template <typename Data>
 Node<Data>* getHeadOfListWithRemainingElements(LinkedList<Data>& leftList, LinkedList<Data>& rightList)
 {
-	if (leftList.getHead() != nullptr)
+	if (leftList.getHead() != leftList.getTail())
 	{
 		return leftList.getHead();
 	}
@@ -23,12 +23,13 @@ Node<Data>* getHeadOfListWithRemainingElements(LinkedList<Data>& leftList, Linke
 template <typename Data>
 void moveRemainingElements(LinkedList<Data>& sortedItems, LinkedList<Data>& leftList, LinkedList<Data>& rightList)
 {
-	Node<Data>* headOfListWithElements = getHeadOfListWithRemainingElements(leftList, rightList);
+	Node<Data>* headOfListWithElements = getHeadOfListWithRemainingElements<Data>(leftList, rightList);
 	Node<Data>* tail = sortedItems.getTail();
 	Node<Data>* lastElement = tail->getPrevious();
-	// This may link to a null pointer
 	lastElement->next = headOfListWithElements;
 	headOfListWithElements->previous = lastElement;
+	headOfListWithElements->next = tail;
+	tail->previous = headOfListWithElements;
 };
 
 template <typename Data>
@@ -57,13 +58,13 @@ LinkedList<Data> mergeLists(LinkedList<Data>& leftList, LinkedList<Data>& rightL
 		if (leftData < rightData)
 		{
 			moveNodeIntoSortedList<Data>(leftList, sortedItems, leftNode);
+			leftNode = leftHead->getNext();
 		}
 		else
 		{
 			moveNodeIntoSortedList<Data>(rightList, sortedItems, rightNode);
+			rightNode = rightHead->getNext();
 		}
-		leftNode = leftHead->getNext();
-		rightNode = rightHead->getNext();
 	}
 	moveRemainingElements<Data>(sortedItems, leftList, rightList);
 	return sortedItems;
