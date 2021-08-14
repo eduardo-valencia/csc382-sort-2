@@ -1,6 +1,10 @@
 #pragma once
-#include "DynamicTest.h"
+
 #include <iostream>
+
+#include "DynamicTest.h"
+#include "testSorted.h"
+#include "mergeSort.h"
 
 using namespace std;
 

@@ -1,16 +1,17 @@
 #include "testSorted.h"
 
-void testGreaterDataDoesNotExist(LinkedList<int>& list, Node<int>* maxNode)
+template <typename Data>
+void testGreaterDataDoesNotExist(LinkedList<Data>& list, Node<Data>* maxNode)
 {
-	Node<int>* head = list.getHead();
-	Node<int>* tail = list.getTail();
-	Node<int>* currentNode = head->getNext();
+	Node<Data>* head = list.getHead();
+	Node<Data>* tail = list.getTail();
+	Node<Data>* currentNode = head->getNext();
 	if (currentNode == tail) return;
 
-	int maxData = *(maxNode->getData());
+	Data maxData = *(maxNode->getData());
 	while (currentNode != maxNode)
 	{
-		int currentData = *(currentNode->getData());
+		Data currentData = *(currentNode->getData());
 		if (currentData > maxData)
 		{
 			cout << "List is not sorted.\n";
@@ -19,14 +20,18 @@ void testGreaterDataDoesNotExist(LinkedList<int>& list, Node<int>* maxNode)
 	}
 }
 
-void testListIsSorted(LinkedList<int>& list)
+template <typename Data>
+void testListIsSorted(LinkedList<Data>& list)
 {
-	Node<int>* head = list.getHead();
-	Node<int>* tail = list.getTail();
-	Node<int>* currentNode = head->getNext();
+	Node<Data>* head = list.getHead();
+	Node<Data>* tail = list.getTail();
+	Node<Data>* currentNode = head->getNext();
 	while (currentNode != tail)
 	{
 		testGreaterDataDoesNotExist(list, currentNode);
 		currentNode = currentNode->getNext();
 	}
 }
+
+template void testListIsSorted(LinkedList<int>& list);
+template void testListIsSorted(LinkedList<string>& list);

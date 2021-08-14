@@ -6,6 +6,8 @@
 
 using namespace std;
 
-void testGreaterDataDoesNotExist(LinkedList<int>& list, Node<int>* maxNode);
+template <typename Data>
+void testGreaterDataDoesNotExist(LinkedList<Data>& list, Node<Data>* maxNode);
 
-void testListIsSorted(LinkedList<int>& list);
+template <typename Data>
+void testListIsSorted(LinkedList<Data>& list);

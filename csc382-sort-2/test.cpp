@@ -65,7 +65,7 @@ public:
 	{
 		insertNodeData();
 		LinkedList<int> sortedList = mergeSort(*linkedList);
-		testListIsSorted(sortedList);
+		testListIsSorted<int>(sortedList);
 		testLength(sortedList);
 	}
 };

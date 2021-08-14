@@ -170,3 +170,4 @@ LinkedList<Data> mergeSort(LinkedList<Data>& list)
 };
 
 template LinkedList<int> mergeSort(LinkedList<int>& list);
+template LinkedList<string> mergeSort(LinkedList<string>& list);
