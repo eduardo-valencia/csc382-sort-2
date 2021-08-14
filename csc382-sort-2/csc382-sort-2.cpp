@@ -4,12 +4,15 @@
 #include <iostream>
 #include "Test.h"
 #include "timeSort.h"
+#include "DynamicSortTest.h"
 
 int main()
 {
     std::cout << "Running automatic tests!\n";
     runTests();
     timeAlgorithm();
+    DynamicSortTest sortTest{};
+    sortTest.startTest();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
