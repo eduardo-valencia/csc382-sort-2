@@ -7,9 +7,7 @@
 
 using namespace std;
 
-const size_t ARRAY_SIZE = 1000;
-
-void insertNumbers(int numbers[], int arraySize, LinkedList<int>& linkedList)
+void insertNumbers(int numbers[], int arraySize, LinkedList<int> &linkedList)
 {
 	for (int numberIndex = 0; numberIndex < arraySize; ++numberIndex)
 	{
@@ -18,10 +16,10 @@ void insertNumbers(int numbers[], int arraySize, LinkedList<int>& linkedList)
 	}
 }
 
-void printLinkedList(LinkedList<int>& linkedList)
+void printLinkedList(LinkedList<int> &linkedList)
 {
 	cout << "Sorted Linked List:\n";
-	Node<int>* currentNode = linkedList.getHead()->getNext();
+	Node<int> *currentNode = linkedList.getHead()->getNext();
 	while (currentNode != linkedList.getTail())
 	{
 		int currentData = *(currentNode->getData());
@@ -31,7 +29,7 @@ void printLinkedList(LinkedList<int>& linkedList)
 	cout << endl;
 }
 
-void logResults(LinkedList<int>& sortedList, clock_t startTime, int arraySize)
+void logResults(LinkedList<int> &sortedList, clock_t startTime, int arraySize)
 {
 	clock_t endTime = clock();
 	clock_t ticksDifference = endTime - startTime;
@@ -46,7 +44,7 @@ void logResults(LinkedList<int>& sortedList, clock_t startTime, int arraySize)
 // From https://www.cplusplus.com/doc/tutorial/arrays/
 void timeSort(int numbers[], int arraySize)
 {
-	LinkedList<int> linkedList{ 0 };
+	LinkedList<int> linkedList{0};
 	insertNumbers(numbers, arraySize, linkedList);
 	clock_t startTime = clock();
 	LinkedList<int> sortedList = mergeSort<int>(linkedList);

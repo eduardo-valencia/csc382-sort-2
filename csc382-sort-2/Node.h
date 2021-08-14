@@ -4,6 +4,9 @@
 
 using namespace std;
 
+///
+/// A container that stores data.
+///
 template <typename Data>
 class Node
 {
@@ -11,21 +14,21 @@ private:
 	Data data;
 
 public:
-	Node* previous;
+	Node *previous;
 
-	Node* next;
+	Node *next;
 
 	Node(Data data);
 
-	Data* getData();
+	Data *getData();
 
 	void setData(Data data);
 
-	Node* getPrevious();
+	Node *getPrevious();
 
-	void setPrevious(Node* previous);
+	void setPrevious(Node *previous);
 
-	Node* getNext();
+	Node *getNext();
 
-	void setNext(Node* next);
+	void setNext(Node *next);
 };
