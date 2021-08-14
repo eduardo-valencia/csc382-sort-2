@@ -51,3 +51,4 @@ void Node<Data>::setPrevious(Node<Data>* newNode)
 }
 
 template class Node<int>;
+template class Node<string>;

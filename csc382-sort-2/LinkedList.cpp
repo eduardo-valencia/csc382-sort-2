@@ -76,3 +76,4 @@ void LinkedList<Data>::Delete(Node<Data>* node)
 }
 
 template class LinkedList<int>;
+template class LinkedList<string>;
