@@ -12,8 +12,32 @@ void insertNumbers(int numbers[], int arraySize, LinkedList<int>& linkedList)
 	for (int numberIndex = 0; numberIndex < arraySize; ++numberIndex)
 	{
 		int number = numbers[numberIndex];
-		cout << "Array number " << number << endl;
 		linkedList.Insert(number);
+	}
+}
+
+void printLinkedList(LinkedList<int>& linkedList)
+{
+	cout << "Sorted Linked List:\n";
+	Node<int>* currentNode = linkedList.getHead()->getNext();
+	while (currentNode != linkedList.getTail())
+	{
+		int currentData = *(currentNode->getData());
+		cout << currentData << " ";
+		currentNode = currentNode->getNext();
+	}
+	cout << endl;
+}
+
+void logResults(LinkedList<int>& sortedList, clock_t startTime, int arraySize)
+{
+	clock_t endTime = clock();
+	clock_t ticksDifference = startTime - endTime;
+	float timeInSeconds = ((float)ticksDifference) / CLOCKS_PER_SEC;
+	cout << "Seconds: " << timeInSeconds << endl;
+	if (arraySize < 100)
+	{
+		printLinkedList(sortedList);
 	}
 }
 
@@ -24,14 +48,11 @@ void timeSort(int numbers[], int arraySize)
 	insertNumbers(numbers, arraySize, linkedList);
 	clock_t startTime = clock();
 	LinkedList<int> sortedList = mergeSort<int>(linkedList);
-	clock_t endTime = clock();
-	clock_t ticksDifference = startTime - endTime;
-	float timeInSeconds = ((float)ticksDifference) / CLOCKS_PER_SEC;
-	cout << "Seconds: " << timeInSeconds << endl;
+	logResults(sortedList, startTime, arraySize);
 }
 
 void timeAlgorithm()
 {
-	int dataSet1[] = {1, 2, 3, 4, 5};
+	int dataSet1[] = {5, 4, 3, 2, 9};
 	timeSort(dataSet1, 5);
 }
