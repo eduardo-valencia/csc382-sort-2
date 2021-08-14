@@ -3,10 +3,10 @@
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `class `[`DynamicSortTest`](#classDynamicSortTest) | The class that will handle testing the sort function manually.
-`class `[`DynamicTest`](#classDynamicTest) | 
+`class `[`DynamicTest`](#classDynamicTest) | The class that allows users to test manually.
 `class `[`LinkedList`](#classLinkedList) | 
-`class `[`MergeSortTest`](#classMergeSortTest) | 
-`class `[`Node`](#classNode) | 
+`class `[`MergeSortTest`](#classMergeSortTest) | A helper class for testing the MergeSort algorithm Reports test results automatically
+`class `[`Node`](#classNode) | A container that stores data.
 
 # class `DynamicSortTest` 
 
@@ -21,18 +21,24 @@ The class that will handle testing the sort function manually.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public  `[`DynamicSortTest`](#classDynamicSortTest_1a34c13534f2a17cb2544011ad3cb7d632)`()` | 
+`public  `[`DynamicSortTest`](#classDynamicSortTest_1a34c13534f2a17cb2544011ad3cb7d632)`()` | Creates a dynamic test with the name "Sort"
 `public virtual void `[`testOperation`](#classDynamicSortTest_1a690020be54f0f191e962683acc3b2dc3)`()` | The function that will test merge sort.
 
 ## Members
 
 #### `public  `[`DynamicSortTest`](#classDynamicSortTest_1a34c13534f2a17cb2544011ad3cb7d632)`()` 
 
+Creates a dynamic test with the name "Sort"
+
 #### `public virtual void `[`testOperation`](#classDynamicSortTest_1a690020be54f0f191e962683acc3b2dc3)`()` 
 
 The function that will test merge sort.
 
+Sorts the user's list and prints out the results.
+
 # class `DynamicTest` 
+
+The class that allows users to test manually.
 
 ## Summary
 
@@ -106,6 +112,8 @@ The function that will test merge sort.
 
 # class `MergeSortTest` 
 
+A helper class for testing the MergeSort algorithm Reports test results automatically
+
 ## Summary
 
  Members                        | Descriptions                                
@@ -123,6 +131,8 @@ The function that will test merge sort.
 #### `public inline void `[`runTests`](#classMergeSortTest_1aedce0925e73316c782ad18af5266ae42)`()` 
 
 # class `Node` 
+
+A container that stores data.
 
 ## Summary
 

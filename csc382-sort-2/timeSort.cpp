@@ -7,6 +7,9 @@
 
 using namespace std;
 
+///
+/// Inserts numbers from an array of numbers into the linked list
+///
 void insertNumbers(int numbers[], int arraySize, LinkedList<int> &linkedList)
 {
 	for (int numberIndex = 0; numberIndex < arraySize; ++numberIndex)
@@ -16,6 +19,9 @@ void insertNumbers(int numbers[], int arraySize, LinkedList<int> &linkedList)
 	}
 }
 
+///
+/// Shows all numbers in a linked list
+///
 void printLinkedList(LinkedList<int> &linkedList)
 {
 	cout << "Sorted Linked List:\n";
@@ -29,6 +35,9 @@ void printLinkedList(LinkedList<int> &linkedList)
 	cout << endl;
 }
 
+///
+/// Shows the time the algorithm took and may print the linked list
+///
 void logResults(LinkedList<int> &sortedList, clock_t startTime, int arraySize)
 {
 	clock_t endTime = clock();
@@ -41,7 +50,10 @@ void logResults(LinkedList<int> &sortedList, clock_t startTime, int arraySize)
 	}
 }
 
-// From https://www.cplusplus.com/doc/tutorial/arrays/
+///
+/// Times how long the algorithm takes and shows the results
+/// From https://www.cplusplus.com/doc/tutorial/arrays/
+///
 void timeSort(int numbers[], int arraySize)
 {
 	LinkedList<int> linkedList{0};
@@ -51,6 +63,9 @@ void timeSort(int numbers[], int arraySize)
 	logResults(sortedList, startTime, arraySize);
 }
 
+///
+/// Generates a dataset with random numbers.
+///
 void generateDataSet(int numbers[], int arraySize)
 {
 	srand(time(NULL));
@@ -60,6 +75,9 @@ void generateDataSet(int numbers[], int arraySize)
 	}
 }
 
+///
+/// Generates the dataset and times how long the algorithm takes for that dataset.
+///
 void generateDataSetAndTimeAlgorithm(int dataset[], const int datasetSize)
 {
 	generateDataSet(dataset, datasetSize);
@@ -87,6 +105,9 @@ void time1000Numbers()
 	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
 }
 
+///
+/// Times the algorithm using all datasets.
+///
 void timeAlgorithm()
 {
 	time10Numbers();

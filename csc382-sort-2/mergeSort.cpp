@@ -173,6 +173,7 @@ LinkedList<Data> getRightList(Data defaultNodeValue, LinkedList<Data> &list, Nod
 
 ///
 /// Sorts a linked list by merging and sorting recursively.
+/// \fn LinkedList<Data> mergeSort(LinkedList<Data> &list)
 /// @param list the list to sort. May mutate the list.
 /// \returns linked list
 ///
