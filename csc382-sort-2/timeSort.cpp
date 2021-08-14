@@ -34,7 +34,7 @@ void printLinkedList(LinkedList<int>& linkedList)
 void logResults(LinkedList<int>& sortedList, clock_t startTime, int arraySize)
 {
 	clock_t endTime = clock();
-	clock_t ticksDifference = startTime - endTime;
+	clock_t ticksDifference = endTime - startTime;
 	float timeInSeconds = ((float)ticksDifference) / CLOCKS_PER_SEC;
 	cout << "Seconds: " << timeInSeconds << endl;
 	if (arraySize < 100)
