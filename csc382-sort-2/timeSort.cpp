@@ -1,5 +1,7 @@
 #include <time.h>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 #include "mergeSort.h"
 
@@ -51,8 +53,45 @@ void timeSort(int numbers[], int arraySize)
 	logResults(sortedList, startTime, arraySize);
 }
 
+void generateDataSet(int numbers[], int arraySize)
+{
+	srand(time(NULL));
+	for (int numberIndex = 0; numberIndex < arraySize; ++numberIndex)
+	{
+		numbers[numberIndex] = rand();
+	}
+}
+
+void generateDataSetAndTimeAlgorithm(int dataset[], const int datasetSize)
+{
+	generateDataSet(dataset, datasetSize);
+	timeSort(dataset, datasetSize);
+}
+
+void time10Numbers()
+{
+	const int datasetSize = 10;
+	int dataset[datasetSize];
+	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
+}
+
+void time100Numbers()
+{
+	const int datasetSize = 100;
+	int dataset[datasetSize];
+	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
+}
+
+void time1000Numbers()
+{
+	const int datasetSize = 1000;
+	int dataset[datasetSize];
+	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
+}
+
 void timeAlgorithm()
 {
-	int dataSet1[] = {5, 4, 3, 2, 9};
-	timeSort(dataSet1, 5);
+	time10Numbers();
+	time100Numbers();
+	time1000Numbers();
 }
