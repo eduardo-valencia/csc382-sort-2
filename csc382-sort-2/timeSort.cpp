@@ -5,25 +5,33 @@
 
 using namespace std;
 
-void insertNumbers(int numbers[1000], LinkedList<int>& linkedList)
+const size_t ARRAY_SIZE = 1000;
+
+void insertNumbers(int numbers[], LinkedList<int>& linkedList)
 {
-	for ()
+	for (int numberIndex = 0; numberIndex < ARRAY_SIZE; ++numberIndex)
+	{
+		int number = numbers[numberIndex];
+		cout << "Array number " << number << endl;
+		linkedList.Insert(number);
+	}
 }
 
-void timeSort(int numbers[1000])
+// From https://www.cplusplus.com/doc/tutorial/arrays/
+void timeSort(int numbers[ARRAY_SIZE])
 {
-	LinkedList<int> myLinkedList{ 0 };
+	LinkedList<int> linkedList{ 0 };
+	insertNumbers(numbers, linkedList);
 	clock_t startTime = clock();
-	LinkedList<int> sortedList = mergeSort<int>(myLinkedList);
+	LinkedList<int> sortedList = mergeSort<int>(linkedList);
 	clock_t endTime = clock();
 	clock_t ticksDifference = startTime - endTime;
-	// From https://www.cplusplus.com/doc/tutorial/arrays/
 	float timeInSeconds = ((float)ticksDifference) / CLOCKS_PER_SEC;
 	cout << "Seconds: " << timeInSeconds << endl;
 }
 
 void timeAlgorithm()
 {
-	int dataSet1[1000] = {};
+	int dataSet1[1000] = {1, 2, 3, 4, 5};
 	timeSort(dataSet1);
 }
