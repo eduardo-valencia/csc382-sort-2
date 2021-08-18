@@ -68,13 +68,6 @@ void generateDataSetAndTimeAlgorithm(int dataset[], const int datasetSize)
 	timeSort(dataset, datasetSize);
 }
 
-void time10Numbers()
-{
-	const int datasetSize = 10;
-	int dataset[datasetSize];
-	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
-}
-
 void time100Numbers()
 {
 	const int datasetSize = 100;
@@ -89,9 +82,16 @@ void time1000Numbers()
 	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
 }
 
+void time10000Numbers()
+{
+	const int datasetSize = 10000;
+	int dataset[datasetSize];
+	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
+}
+
 void timeAlgorithm()
 {
-	time10Numbers();
 	time100Numbers();
 	time1000Numbers();
+	time10000Numbers();
 }
