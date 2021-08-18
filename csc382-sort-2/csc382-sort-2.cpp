@@ -8,6 +8,7 @@
 
 int main()
 {
+    std::cout << "This program uses mergeSort.\n";
     std::cout << "Running automatic tests!\n";
     runTests();
     timeAlgorithm();
