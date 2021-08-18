@@ -20,22 +20,6 @@ void insertNumbers(int numbers[], int arraySize, LinkedList<int> &linkedList)
 }
 
 ///
-/// Shows all numbers in a linked list
-///
-void printLinkedList(LinkedList<int> &linkedList)
-{
-	cout << "Sorted Linked List:\n";
-	Node<int> *currentNode = linkedList.getHead()->getNext();
-	while (currentNode != linkedList.getTail())
-	{
-		int currentData = *(currentNode->getData());
-		cout << currentData << " ";
-		currentNode = currentNode->getNext();
-	}
-	cout << endl;
-}
-
-///
 /// Shows the time the algorithm took and may print the linked list
 ///
 void logResults(LinkedList<int> &sortedList, clock_t startTime, int arraySize)
@@ -46,7 +30,7 @@ void logResults(LinkedList<int> &sortedList, clock_t startTime, int arraySize)
 	cout << "Seconds: " << timeInSeconds << endl;
 	if (arraySize < 100)
 	{
-		printLinkedList(sortedList);
+		printLinkedList<int>(sortedList);
 	}
 }
 

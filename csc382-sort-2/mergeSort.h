@@ -4,6 +4,7 @@
 
 #include "Node.h"
 #include "LinkedList.h"
+#include "testSorted.h"
 
 template <typename Data>
 void moveNodeIntoSortedList(LinkedList<Data> &list, LinkedList<Data> &sortedItems, Node<Data> *node);

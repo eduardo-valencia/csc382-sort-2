@@ -41,6 +41,27 @@ void testListIsSorted(LinkedList<Data> &list)
 	}
 }
 
+///
+/// Shows all numbers in a linked list
+///
+template <typename Data>
+void printLinkedList(LinkedList<Data>& linkedList)
+{
+	cout << "Sorted Linked List:\n";
+	Node<Data>* currentNode = linkedList.getHead()->getNext();
+	while (currentNode != linkedList.getTail())
+	{
+		Data currentData = *(currentNode->getData());
+		cout << currentData << " ";
+		currentNode = currentNode->getNext();
+	}
+	cout << endl;
+}
+
 // Define int and string templates for testListIsSorted
 template void testListIsSorted(LinkedList<int> &list);
 template void testListIsSorted(LinkedList<string> &list);
+
+// Define int and string templates for printLinkedList
+template void printLinkedList(LinkedList<int>& linkedList);
+template void printLinkedList(LinkedList<string>& linkedList);
