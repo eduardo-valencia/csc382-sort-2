@@ -7,9 +7,13 @@
 
 using namespace std;
 
+///
+/// A helper class for testing the MergeSort algorithm
+/// Reports test results automatically
+///
 class MergeSortTest
 {
-	LinkedList<int>* linkedList;
+	LinkedList<int> *linkedList;
 	vector<int> nodeData;
 
 	// Inserts all data from nodeData into the linked list
@@ -19,15 +23,14 @@ class MergeSortTest
 		for (vector<int>::iterator currentInt = nodeData.begin(); currentInt != nodeData.end(); ++currentInt)
 		{
 			linkedList->Insert(*currentInt);
-
 		}
 	}
 
 	// Returns length of the linked list
-	int getLength(LinkedList<int>& list)
+	int getLength(LinkedList<int> &list)
 	{
 		int length = 0;
-		Node<int>* currentNode = list.getHead();
+		Node<int> *currentNode = list.getHead();
 		while (currentNode->getNext() != nullptr)
 		{
 			currentNode = currentNode->getNext();
@@ -39,7 +42,7 @@ class MergeSortTest
 		return length;
 	}
 
-	void testLength(LinkedList<int>& list)
+	void testLength(LinkedList<int> &list)
 	{
 		int length = getLength(list);
 		if (length != nodeData.size())
@@ -50,9 +53,9 @@ class MergeSortTest
 
 public:
 	// Constructor to instantiate properties
-	MergeSortTest(vector<int> nodeData) : nodeData{ nodeData }
+	MergeSortTest(vector<int> nodeData) : nodeData{nodeData}
 	{
-		linkedList = new LinkedList<int>{ 0 };
+		linkedList = new LinkedList<int>{0};
 	}
 
 	// Destructor
@@ -61,6 +64,7 @@ public:
 		delete linkedList;
 	}
 
+	// Runs tests and reports results
 	void runTests()
 	{
 		insertNodeData();
@@ -73,38 +77,39 @@ public:
 void testEmptyList()
 {
 	vector<int> nodeData{};
-	MergeSortTest test{ nodeData };
+	MergeSortTest test{nodeData};
 	test.runTests();
 }
 
 void testListWithSingleNode()
 {
 	vector<int> nodeData{100};
-	MergeSortTest test{ nodeData };
+	MergeSortTest test{nodeData};
 	test.runTests();
 }
 
 void testListWithEvenNodeNumber()
 {
-	vector<int> nodeData{ 2, 1 };
-	MergeSortTest test{ nodeData };
+	vector<int> nodeData{2, 1};
+	MergeSortTest test{nodeData};
 	test.runTests();
 }
 
 void testListWithOddNodeNumber()
 {
-	vector<int> nodeData{ 3, 2, 9 };
-	MergeSortTest test{ nodeData };
+	vector<int> nodeData{3, 2, 9};
+	MergeSortTest test{nodeData};
 	test.runTests();
 }
 
 void testListWithLargerDataSet()
 {
-	vector<int> nodeData{ 100, 98, 383, 2923, 192, 2, 0, 0, -1, 20, 40 };
-	MergeSortTest test{ nodeData };
+	vector<int> nodeData{100, 98, 383, 2923, 192, 2, 0, 0, -1, 20, 40};
+	MergeSortTest test{nodeData};
 	test.runTests();
 }
 
+// Runs all tests
 void runTests()
 {
 	testEmptyList();

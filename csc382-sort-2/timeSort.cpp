@@ -7,9 +7,10 @@
 
 using namespace std;
 
-const size_t ARRAY_SIZE = 1000;
-
-void insertNumbers(int numbers[], int arraySize, LinkedList<int>& linkedList)
+///
+/// Inserts numbers from an array of numbers into the linked list
+///
+void insertNumbers(int numbers[], int arraySize, LinkedList<int> &linkedList)
 {
 	for (int numberIndex = 0; numberIndex < arraySize; ++numberIndex)
 	{
@@ -18,10 +19,13 @@ void insertNumbers(int numbers[], int arraySize, LinkedList<int>& linkedList)
 	}
 }
 
-void printLinkedList(LinkedList<int>& linkedList)
+///
+/// Shows all numbers in a linked list
+///
+void printLinkedList(LinkedList<int> &linkedList)
 {
 	cout << "Sorted Linked List:\n";
-	Node<int>* currentNode = linkedList.getHead()->getNext();
+	Node<int> *currentNode = linkedList.getHead()->getNext();
 	while (currentNode != linkedList.getTail())
 	{
 		int currentData = *(currentNode->getData());
@@ -31,7 +35,10 @@ void printLinkedList(LinkedList<int>& linkedList)
 	cout << endl;
 }
 
-void logResults(LinkedList<int>& sortedList, clock_t startTime, int arraySize)
+///
+/// Shows the time the algorithm took and may print the linked list
+///
+void logResults(LinkedList<int> &sortedList, clock_t startTime, int arraySize)
 {
 	clock_t endTime = clock();
 	clock_t ticksDifference = endTime - startTime;
@@ -43,16 +50,22 @@ void logResults(LinkedList<int>& sortedList, clock_t startTime, int arraySize)
 	}
 }
 
-// From https://www.cplusplus.com/doc/tutorial/arrays/
+///
+/// Times how long the algorithm takes and shows the results
+/// From https://www.cplusplus.com/doc/tutorial/arrays/
+///
 void timeSort(int numbers[], int arraySize)
 {
-	LinkedList<int> linkedList{ 0 };
+	LinkedList<int> linkedList{0};
 	insertNumbers(numbers, arraySize, linkedList);
 	clock_t startTime = clock();
 	LinkedList<int> sortedList = mergeSort<int>(linkedList);
 	logResults(sortedList, startTime, arraySize);
 }
 
+///
+/// Generates a dataset with random numbers.
+///
 void generateDataSet(int numbers[], int arraySize)
 {
 	srand(time(NULL));
@@ -62,6 +75,9 @@ void generateDataSet(int numbers[], int arraySize)
 	}
 }
 
+///
+/// Generates the dataset and times how long the algorithm takes for that dataset.
+///
 void generateDataSetAndTimeAlgorithm(int dataset[], const int datasetSize)
 {
 	generateDataSet(dataset, datasetSize);
@@ -89,6 +105,9 @@ void time10000Numbers()
 	generateDataSetAndTimeAlgorithm(dataset, datasetSize);
 }
 
+///
+/// Times the algorithm using all datasets.
+///
 void timeAlgorithm()
 {
 	time100Numbers();

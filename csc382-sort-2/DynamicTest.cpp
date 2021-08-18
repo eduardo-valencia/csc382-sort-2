@@ -2,7 +2,7 @@
 
 // Add dynamic test constructor.
 // Takes the test name and makes a linked list for testing
-DynamicTest::DynamicTest(string name) : name{ name }, linkedList{ LinkedList<string>{""} }
+DynamicTest::DynamicTest(string name) : name{name}, linkedList{LinkedList<string>{""}}
 {
 }
 
@@ -16,7 +16,7 @@ string DynamicTest::prompt(string question)
 }
 
 // Asks the user what letter they want to insert, then inserts it.
-void DynamicTest::promptUserToInsertDataItem(bool& shouldContinue)
+void DynamicTest::promptUserToInsertDataItem(bool &shouldContinue)
 {
 	string itemToInsert = prompt("What letter do you want to insert?");
 	linkedList.Insert(itemToInsert);
@@ -36,14 +36,14 @@ void DynamicTest::promptUserToInsertData()
 }
 
 // Asks the user what letter they want to find, then returns the match
-Node<string>* DynamicTest::promptUserToFindItem()
+Node<string> *DynamicTest::promptUserToFindItem()
 {
 	string letterToFind = prompt("Type in the letter to find.");
 	return linkedList.Find(&letterToFind);
 }
 
 // Shows whether the match was found, given a pointer.
-void DynamicTest::showWhetherItemWasFound(Node<string>* item)
+void DynamicTest::showWhetherItemWasFound(Node<string> *item)
 {
 	if (item == nullptr)
 	{

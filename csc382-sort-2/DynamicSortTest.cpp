@@ -1,10 +1,17 @@
 #include "DynamicSortTest.h"
 
-DynamicSortTest::DynamicSortTest() : DynamicTest("Sort") {
-
+///
+/// Creates a dynamic test with the name "Sort"
+///
+DynamicSortTest::DynamicSortTest() : DynamicTest("Sort")
+{
 }
 
-void DynamicSortTest::testOperation() {
+///
+/// Sorts the user's list and prints out the results.
+///
+void DynamicSortTest::testOperation()
+{
 	cout << "Sorting list...\n";
 	LinkedList<string> sortedList = mergeSort<string>(linkedList);
 	testListIsSorted<string>(sortedList);
